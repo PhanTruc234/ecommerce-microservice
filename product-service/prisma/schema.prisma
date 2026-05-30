@@ -11,3 +11,117 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Category {
+  id                String            @id @default(cuid())
+  name              String
+  slug              String            @unique
+  thumbnail         String?
+  thumbnailId       String?           @unique
+  parentId          String?
+  level             Int               @default(1)
+  parent            Category?         @relation("CategoryParentChild", fields: [parentId], references: [id])
+  children          Category[]        @relation("CategoryParentChild")
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  productCategories ProductCategory[]
+
+  @@unique([slug, parentId])
+  @@index([parentId])
+}
+
+model Brand {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  thumbnail   String?
+  thumbnialId String?   @unique
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model ProductImage {
+  productId   String
+  thumbnail   String?
+  thumbnialId String? @unique
+  isMain      Boolean @default(false)
+  product     Product @relation(fields: [productId], references: [id])
+
+  @@id([productId])
+  @@index([productId])
+}
+
+model VariantImage {
+  variantId   String
+  thumbnail   String
+  thumbnialId String?        @unique
+  isMain      Boolean        @default(false)
+  variant     ProductVariant @relation(fields: [variantId], references: [id])
+
+  @@id([variantId])
+  @@index([variantId])
+}
+
+model ProductVariant {
+  id        String   @id @default(cuid())
+  sku       String   @unique
+  price     Decimal  @db.Decimal(18, 2)
+  stock     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+
+  variantImages VariantImage[]
+  attributes    VariantAttribute[]
+
+  @@index([productId])
+}
+
+model VariantAttribute {
+  id    String @id @default(cuid())
+  key   String
+  value String
+
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id])
+
+  @@index([variantId])
+}
+
+model Product {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String?
+  basePrice   Decimal @db.Decimal(18, 2)
+
+  brandId String
+  brand   Brand  @relation(fields: [brandId], references: [id])
+
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  productImages ProductImage[]
+  variants      ProductVariant[]
+  categories    ProductCategory[]
+
+  @@index([brandId])
+  @@index([name])
+  @@index([slug])
+  @@index([createdAt])
+  @@index([basePrice])
+}
+
+model ProductCategory {
+  productId  String
+  categoryId String
+  isPrimary  Boolean @default(false)
+
+  product  Product  @relation(fields: [productId], references: [id])
+  category Category @relation(fields: [categoryId], references: [id])
+
+  @@id([productId, categoryId])
+  @@index([categoryId])
+}
