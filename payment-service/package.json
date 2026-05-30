@@ -25,7 +25,8 @@
     "express": "^5.2.1",
     "helmet": "^8.2.0",
     "hemera": "^0.0.5",
-    "nats": "^2.29.3"
+    "nats": "^2.29.3",
+    "nats-hemera": "^7.0.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
