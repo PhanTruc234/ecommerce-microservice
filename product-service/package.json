@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "prisma:migrate:dev": "prisma migrate dev --name init",
+    "prisma:generate": "prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +21,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@prisma/client": "^7.8.0",
+    "@prisma/client": "5.22.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
@@ -29,6 +31,7 @@
     "jsonwebtoken": "^9.0.3",
     "nats": "^2.29.3",
     "nats-hemera": "^7.0.2",
+    "slugify": "^1.6.9",
     "zod": "^4.4.3"
   },
   "devDependencies": {
@@ -37,7 +40,7 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.9.1",
-    "prisma": "^7.8.0",
+    "prisma": "5.22.0",
     "tsx": "^4.22.3",
     "typescript": "^6.0.3"
   }

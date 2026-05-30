@@ -4,12 +4,12 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Category {
@@ -35,7 +35,7 @@ model Brand {
   name        String
   slug        String    @unique
   thumbnail   String?
-  thumbnialId String?   @unique
+  thumbnailId String?   @unique
   description String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -43,24 +43,26 @@ model Brand {
 }
 
 model ProductImage {
+  id          String  @id @default(cuid())
   productId   String
   thumbnail   String?
-  thumbnialId String? @unique
+  thumbnailId String? @unique
   isMain      Boolean @default(false)
-  product     Product @relation(fields: [productId], references: [id])
 
-  @@id([productId])
+  product Product @relation(fields: [productId], references: [id])
+
   @@index([productId])
 }
 
 model VariantImage {
+  id          String  @id @default(cuid())
   variantId   String
   thumbnail   String
-  thumbnialId String?        @unique
-  isMain      Boolean        @default(false)
-  variant     ProductVariant @relation(fields: [variantId], references: [id])
+  thumbnailId String? @unique
+  isMain      Boolean @default(false)
 
-  @@id([variantId])
+  variant ProductVariant @relation(fields: [variantId], references: [id])
+
   @@index([variantId])
 }
 
