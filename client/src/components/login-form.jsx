@@ -20,11 +20,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import z from "zod"
 import { useNavigate } from "react-router-dom"
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google"
-import axios from "axios"
-import axiosClient from "@/shared/api/axiosClient"
 import { API_LOGIN_GOOGLE } from "@/shared/constants/api"
 import { AuthStore } from "@/stores/auth.store"
 import { toast } from "sonner"
+import { authClient } from "@/shared/api/axiosClient"
 
 const loginSchema = z.object({
   email: z
@@ -60,7 +59,7 @@ export function LoginForm({
         console.error("Không nhận được thông tin xác thực của google");
         return;
       }
-      const response = await axiosClient.post(API_LOGIN_GOOGLE, {
+      const response = await authClient.post(API_LOGIN_GOOGLE, {
         credential
       });
       const accessToken = response?.data?.data?.accessToken;

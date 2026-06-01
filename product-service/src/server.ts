@@ -4,12 +4,13 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import cookieParser from "cookie-parser"
 import { errorHandler } from './middlewares/error.middleware';
-
+import brandRoute from "./routes/brand.route"
+import categoryRoute from "./routes/category.route"
+import productRoute from "./routes/product.route"
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 
-// Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
@@ -17,6 +18,9 @@ app.use(cors({
     credentials: true
 }));
 app.use(helmet());
+app.use('/api/brands', brandRoute)
+app.use("/api/categories", categoryRoute)
+app.use("/api/products", productRoute)
 app.use(errorHandler);
 app.listen(PORT, () => {
     console.log(`🚀 Order Service running on port ${PORT}`);

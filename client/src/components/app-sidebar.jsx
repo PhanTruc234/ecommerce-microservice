@@ -14,7 +14,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { GalleryVerticalEndIcon, AudioLinesIcon, TerminalIcon, TerminalSquareIcon, BotIcon, BookOpenIcon, Settings2Icon, FrameIcon, PieChartIcon, MapIcon, LayoutDashboard, Images, Box, ChartBarStacked, Store, TicketPercent, MessageSquareText } from "lucide-react"
-// import { useGetCategory } from "@/hooks/category/useCategory"
+import { useGetCategory } from "@/hooks/category/useCategory"
 import { AuthStore } from "@/stores/auth.store"
 import { ShoppingBag } from "lucide-react"
 import { UserCog } from "lucide-react"

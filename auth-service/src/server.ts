@@ -9,7 +9,7 @@ import { errorHandler } from './middlewares/error.middleware';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 // Middleware
 app.use(express.json());

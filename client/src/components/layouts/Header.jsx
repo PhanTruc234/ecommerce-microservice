@@ -6,13 +6,13 @@ import logo from "../../assets/logo.png"
 import { ChevronDown, ChevronUp, LayoutDashboard, LogOut, ShieldCheck, ShoppingBag, User } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthStore } from '@/stores/auth.store'
-// import { useCategory } from '@/hooks/category/useCategory'
+import { useCategory } from '@/hooks/category/useCategory'
 // import { CartStore } from '@/stores/cart.store'
 export const Header = () => {
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
     const navigate = useNavigate();
-    // const { categories, isLoading, isValidating, refreshCategory } = useCategory()
+    const { categories, isLoading, isValidating, refreshCategory } = useCategory()
     const { user, logout } = AuthStore()
     // const { cartCount } = CartStore()
     useEffect(() => {
@@ -26,7 +26,7 @@ export const Header = () => {
         await logout();
         navigate("/");
     };
-    const categories = []
+    // const categories = []
     return (
         <header className="header-root">
             <section className='header-container'>
@@ -122,7 +122,7 @@ export const Header = () => {
                                     <div className="py-1">
                                         {user.role === "ADMIN" && (
                                             <>
-                                                <MenuItem icon={<LayoutDashboard size={15} />} label="Trang quản trị" onClick={() => navigate("/admin")} />
+                                                <MenuItem icon={<LayoutDashboard size={15} />} label="Trang quản trị" onClick={() => navigate("/admin/category")} />
                                                 <div className="h-px bg-gray-100 my-1" />
                                             </>
                                         )}

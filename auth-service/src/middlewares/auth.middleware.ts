@@ -1,22 +1,16 @@
 
-
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken"
 import { Forbidden, Unauthorized } from "../errors/http.error";
 import { prisma } from "../configs/prisma";
 import { AuthPayload } from "../schemas/auth.schema";
-import { Role } from "@prisma/client";
 
 
 export const verifyToken = async (token: string) => {
     const decoded = jwt.decode(token, { complete: true }) as any;
-
-
     if (!decoded || !decoded.header?.kid) {
         throw new Unauthorized("Invalid token");
     }
-
-
     const apiKey = await prisma.apiKey.findUnique({
         where: { id: decoded.header.kid }
     });
