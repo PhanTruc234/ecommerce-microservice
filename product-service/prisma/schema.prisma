@@ -26,7 +26,7 @@ model Category {
   updatedAt         DateTime          @updatedAt
   productCategories ProductCategory[]
 
-  @@unique([slug, parentId])
+  @@unique([slug, parentId]) 
   @@index([parentId])
 }
 
