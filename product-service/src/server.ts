@@ -3,10 +3,13 @@ import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 import cookieParser from "cookie-parser"
+import "./actions/product.hemera";
 import { errorHandler } from './middlewares/error.middleware';
 import brandRoute from "./routes/brand.route"
 import categoryRoute from "./routes/category.route"
 import productRoute from "./routes/product.route"
+import { requestLogger } from './middlewares/requestLogger.middleware';
+import { startHeartbeat } from './observability/heartbeat';
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3003;
@@ -18,10 +21,12 @@ app.use(cors({
     credentials: true
 }));
 app.use(helmet());
+app.use(requestLogger("product-service"));
 app.use('/api/brands', brandRoute)
 app.use("/api/categories", categoryRoute)
 app.use("/api/products", productRoute)
+startHeartbeat("product-service");
 app.use(errorHandler);
 app.listen(PORT, () => {
-    console.log(`🚀 Order Service running on port ${PORT}`);
+    console.log(`🚀 Product Service running on port ${PORT}`);
 });
