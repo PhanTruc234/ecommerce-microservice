@@ -21,8 +21,9 @@ export const requestLogger = (service: string) => {
                 timestamp: Date.now(),
             });
         } catch {
-            console.log([LOG] cannot send log to observability-service);
+            console.log(`[LOG] cannot send log to observability - service`);
         }
+
 
         next();
     };
