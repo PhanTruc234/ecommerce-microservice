@@ -7,6 +7,7 @@ import { ChevronDown, ChevronUp, LayoutDashboard, LogOut, ShieldCheck, ShoppingB
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthStore } from '@/stores/auth.store'
 import { useCategory } from '@/hooks/category/useCategory'
+import { CartStore } from '@/stores/cart.store'
 // import { CartStore } from '@/stores/cart.store'
 export const Header = () => {
     const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ export const Header = () => {
     const navigate = useNavigate();
     const { categories, isLoading, isValidating, refreshCategory } = useCategory()
     const { user, logout } = AuthStore()
-    // const { cartCount } = CartStore()
+    const { cartCount } = CartStore()
     useEffect(() => {
         const handler = (e) => {
             if (ref.current && !ref.current.contains(e.target)) setOpen(false);
@@ -89,9 +90,9 @@ export const Header = () => {
                     <li className=''>
                         <a href="cart" className='relative'>
                             <img src={Container} alt="Container" />
-                            {/* {cartCount ? <div className='absolute w-5 h-5 text-xs text-secondary font-semibolb rounded-full bg-blues-500 flex items-center justify-center -top-2 -right-3'>
+                            {cartCount ? <div className='absolute w-5 h-5 text-xs text-secondary font-semibolb rounded-full bg-blues-500 flex items-center justify-center -top-2 -right-3'>
                                 <p >{cartCount}</p>
-                            </div> : ""} */}
+                            </div> : ""}
                         </a>
                     </li>
                     <li className='avatar-btn'>

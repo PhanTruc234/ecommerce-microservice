@@ -6,6 +6,8 @@ import cookieParser from "cookie-parser";
 import "./actions/auth.hemera";
 import authRoute from "./routes/auth.route"
 import { errorHandler } from './middlewares/error.middleware';
+import { startHeartbeat } from './observability/heartbeat';
+import { requestLogger } from './middlewares/requestLogger.middleware';
 dotenv.config();
 
 const app = express();
@@ -19,8 +21,10 @@ app.use(cors({
     credentials: true
 }));
 app.use(helmet());
+app.use(requestLogger("auth-service"));
 app.use("/api/auths", authRoute)
+startHeartbeat("auth-service");
 app.use(errorHandler);
 app.listen(PORT, () => {
-    console.log(`🚀 Order Service running on port ${PORT}`);
+    console.log(`🚀 Auth Service running on port ${PORT}`);
 });

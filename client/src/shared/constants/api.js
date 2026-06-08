@@ -27,10 +27,10 @@ export const API_PRODUCT = "/api/products"
 
 export const API_DISCOUNT = "/api/discount"
 
-export const API_CART = "/api/cart"
+export const API_CART = "/api/carts"
 
-export const API_ORDER = "/api/order"
-export const API_CHECKOUT = "/api/order/checkout/preview"
+export const API_ORDER = "/api/orders"
+export const API_CHECKOUT = "/api/orders/checkout/preview"
 
 export const API_PAYMENT = "/api/payment"
 // export const API_PAYMENT_WEBHOOK = "/api/payment/webhook"

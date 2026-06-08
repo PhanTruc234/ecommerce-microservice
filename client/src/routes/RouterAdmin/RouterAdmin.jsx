@@ -6,6 +6,7 @@ import { BrandPage } from "@/pages/AdminPage/Brand/BrandPage"
 import { ProductPage } from "@/pages/AdminPage/Product/ProductPage"
 import { ProductForm } from "@/pages/AdminPage/Product/ProductForm"
 import { ProductEdit } from "@/pages/AdminPage/Product/ProductEdit"
+import { OrderPage } from "@/pages/AdminPage/Order/OrderPage"
 
 export const adminRoutes = [
     {
@@ -30,7 +31,7 @@ export const adminRoutes = [
                     },
                     // { path: "discount", element: <DiscountPage /> },
                     // { path: "chat", element: <AdminChatPage /> },
-                    // { path: "order", element: <OrderPage /> },
+                    { path: "order", element: <OrderPage /> },
                     // { path: "user", element: <UserPage /> }
                 ]
             }
