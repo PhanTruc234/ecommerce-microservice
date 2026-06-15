@@ -5,6 +5,8 @@ import { SignupForm } from '@/components/signup-form'
 import { CartPage } from '@/pages/AccountPage/Cart/CartPage'
 import { CheckoutPage } from '@/pages/AccountPage/Checkout/CheckoutPage'
 import { HomePage } from '@/pages/AccountPage/HomePage'
+import { InfoPersonalPage } from '@/pages/AccountPage/InfoPage/InfoPersonalPage'
+import { MyOrderPage } from '@/pages/AccountPage/InfoPage/Order/MyOrderPage'
 import { PaymentPage } from '@/pages/AccountPage/Payment/PaymentPage'
 import { ProductDetail } from '@/pages/AccountPage/Product/ProductDetai'
 import { ProductList } from '@/pages/AccountPage/Product/ProductList'
@@ -19,8 +21,7 @@ export const accountRoutes = [
             { index: true, element: <HomePage /> },
             { path: 'sign-in', element: <LoginForm /> },
             { path: 'sign-up', element: <SignupForm /> },
-            // { path: 'profile', element: <InfoPersonalPage /> },
-            // { path: 'profile/edit', element: <EditProfile /> },
+            { path: 'profile', element: <InfoPersonalPage /> },
             { path: 'product', element: <ProductList /> },
             { path: 'product/:slug', element: <ProductDetail /> },
             { path: "cart", element: <CartPage /> },
@@ -37,7 +38,7 @@ export const accountRoutes = [
                 path: "payment/cancel",
                 element: <PaymentPage />
             },
-            // { path: "orders", element: <MyOrderPage /> }
+            { path: "orders", element: <MyOrderPage /> }
         ],
     },
 ]

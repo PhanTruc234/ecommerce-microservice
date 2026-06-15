@@ -55,7 +55,6 @@ class PaymentController extends ResponseHandler {
                 req.body.orderId,
                 req.body.payosOrderCode
             );
-
             return this.ok(res, data, "Xac nhan thanh toan thanh cong");
         } catch (error) {
             next(error);

@@ -10,7 +10,7 @@ export const startHeartbeat = (service: string) => {
                 timestamp: Date.now(),
             });
         } catch {
-            console.log(`[HEARTBEAT] cannot reach observability-service`);
+            console.log(`[HEARTBEAT] không thể kết nối với dịch vụ quan sát`);
         }
-    }, 5000);
+    }, 10000);
 };
