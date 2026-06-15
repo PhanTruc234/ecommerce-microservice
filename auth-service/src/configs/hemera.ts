@@ -1,7 +1,10 @@
 import Hemera from 'nats-hemera'
 import nats from 'nats'
+
+const NATS_URL = process.env.NATS_URL || 'nats://localhost:4222'
+
 const nc = nats.connect({
-    servers: ['nats://localhost:4222']
+    servers: [NATS_URL]
 })
 const hemera = new Hemera(nc, {
     name: 'auth-service'

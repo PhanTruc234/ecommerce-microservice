@@ -1,13 +1,11 @@
 {
-  "name": "product-service",
+  "name": "observability-service",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/server.ts",
-    "prisma:migrate:dev": "prisma migrate dev --name init",
-    "prisma:generate": "prisma generate"
+    "dev": "tsx watch src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -21,30 +19,18 @@
   },
   "type": "module",
   "dependencies": {
-    "@prisma/client": "5.22.0",
-    "cloudinary": "^2.10.0",
-    "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "flexsearch": "^0.8.212",
-    "helmet": "^8.2.0",
-    "jsonwebtoken": "^9.0.3",
-    "multer": "^2.1.1",
+    "hemera": "^0.0.5",
     "nats": "^1.4.12",
-    "nats-hemera": "^7.0.2",
-    "slugify": "^1.6.9",
-    "zod": "^4.4.3"
+    "nats-hemera": "^7.0.2"
   },
   "devDependencies": {
-    "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
-    "@types/jsonwebtoken": "^9.0.10",
-    "@types/multer": "^2.1.0",
     "@types/node": "^25.9.1",
-    "prisma": "5.22.0",
-    "tsx": "^4.22.3",
+    "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   }
 }

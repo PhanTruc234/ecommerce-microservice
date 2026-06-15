@@ -1,7 +1,9 @@
 import hemera from "../configs/hemera";
 
+const HEARTBEAT_INTERVAL_MS = Number(process.env.HEARTBEAT_INTERVAL_MS || 10000);
+
 export const startHeartbeat = (service: string) => {
-    setInterval(async () => {
+    const sendHeartbeat = async () => {
         try {
             await hemera.act({
                 topic: "observability",
@@ -10,7 +12,10 @@ export const startHeartbeat = (service: string) => {
                 timestamp: Date.now(),
             });
         } catch {
-            console.log(`[HEARTBEAT] không thể kết nối với dịch vụ quan sát`);
+            console.log("[HEARTBEAT] cannot connect to observability-service");
         }
-    }, 10000);
+    };
+
+    void sendHeartbeat();
+    setInterval(sendHeartbeat, HEARTBEAT_INTERVAL_MS);
 };
