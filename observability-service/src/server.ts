@@ -23,8 +23,8 @@ type RequestLog = {
 
 const app = express();
 const PORT = process.env.PORT || 3010;
-const HEARTBEAT_TIMEOUT_MS = Number(process.env.HEARTBEAT_TIMEOUT_MS || 30000);
-const HEARTBEAT_SWEEP_MS = Number(process.env.HEARTBEAT_SWEEP_MS || 10000);
+const HEARTBEAT_TIMEOUT_MS = Number(process.env.HEARTBEAT_TIMEOUT_MS || 15000);
+const HEARTBEAT_SWEEP_MS = Number(process.env.HEARTBEAT_SWEEP_MS || 20000);
 const MAX_LOGS = Number(process.env.MAX_OBSERVABILITY_LOGS || 100);
 
 const services = new Map<string, HeartbeatState>();
