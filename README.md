@@ -1,5 +1,17 @@
 # Nền tảng Thương mại điện tử theo kiến trúc Microservices
 
+## Giảng viên hướng dẫn: TS. Nguyễn Lệ Thu
+
+### Nhóm 8
+
+| STT | Họ và tên | Mã sinh viên | Email |
+|-----|-----------|--------------|-------|
+| 1 | Nguyễn Kiêm Mạnh | 23010909 | 23010909@st.phenikaa-uni.edu.vn |
+| 2 | Phan Minh Trúc | 23010818 | 23010818@st.phenikaa-uni.edu.vn |
+| 3 | Nguyễn Văn Mạnh | 23010559 | 23010559@st.phenikaa-uni.edu.vn |
+
+[Link Demo](https://drive.google.com/file/d/10Ol8FlBwVlxmok5Yf-csCBa4XyrS0bJ0/view?usp=sharing)
+
 Nền tảng thương mại điện tử phân tán cho cửa hàng thời trang, xây dựng theo **kiến trúc microservices**. Các dịch vụ triển khai độc lập, tự quản lý dữ liệu của mình và giao tiếp bất đồng bộ qua message broker **NATS** sử dụng framework RPC **Hemera**.
 
 <p align="left">
@@ -393,7 +405,7 @@ src/
 
 ## Tác giả
 
-**Nguyễn Kiếm Mạnh** — Đồ án môn Ứng dụng Phân tán (UDPT).
+**Nguyễn Kiếm Mạnh** — BTGK môn Ứng dụng Phân tán (UDPT).
 
 ---
 
